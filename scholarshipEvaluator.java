@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class scholarshipEvaluator {
 
-	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
+		//The variables to be used in the program
 		int yearLevel;
 		double gpa;
 		boolean isScholar;
@@ -15,6 +15,7 @@ public class scholarshipEvaluator {
 		double tuitionFee = 0;
 		String yearLabel = null;
 		
+		//asks the user for their year level, GPA, and if they are a scholar or not
 		System.out.println("==TUITION EVALUATOR==");
 		System.out.println("---------------------");
 		
@@ -27,6 +28,7 @@ public class scholarshipEvaluator {
 		System.out.print("Are you a Scholar?(true/false): ");
 		isScholar = scanner.nextBoolean();
 		
+		//switch statement to determine the base rate and year label based on the year level
 		switch (yearLevel) {
 		case 1:
 			yearLabel = "Freshman";
@@ -46,9 +48,10 @@ public class scholarshipEvaluator {
 		default:
 			System.out.println("");
 			System.out.println(">>Invalid year level<<");
-			return;
+			break;
 		}
 		
+		//determine the honor discount and support fee based on GPA
 		if (gpa >= 3.5 && gpa <= 4.0) {
 			if (isScholar) {
 				honorDiscount += baseRate * 0.30;
@@ -66,8 +69,10 @@ public class scholarshipEvaluator {
 			}
 		}
 		
+		//calculate the total tuition fee
 		tuitionFee = baseRate + supportFee - honorDiscount;
 		
+		//display the summary of the user's input and the calculated tuition fee
 		System.out.println("");
 		System.out.println("Year Lvl: " + yearLabel);
 		System.out.println("GPA: " + gpa);
